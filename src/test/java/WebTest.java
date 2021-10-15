@@ -6,6 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class WebTest {
+
     @Test
     public void testGetSum() throws InterruptedException {
         String chromeDriver = "webdriver.chrome.driver";
