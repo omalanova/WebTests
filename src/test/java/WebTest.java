@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 public class WebTest {
 
     @Test
-    public void testGetSum() throws InterruptedException {
+    public void testFirst() throws InterruptedException {
         String chromeDriver = "webdriver.chrome.driver";
         String driverPath = "D:/workJava/chromedriver.exe";
         String url = "http://www.99-bottles-of-beer.net/";
@@ -25,6 +25,8 @@ public class WebTest {
         String actualResult = driver.getCurrentUrl();
 
         Assert.assertEquals(actualResult, expectedResult);
+
+
 //
 //        WebElement username = driver.findElement(By.id("user_email_login"));
 //        WebElement password = driver.findElement(By.id("user_password"));
@@ -38,6 +40,29 @@ public class WebTest {
 //        String expectedUrl = driver.getCurrentUrl();
 //
 //        Assert.assertEquals(expectedUrl, actualUrl);
+        driver.close();
+        driver.quit();
+    }
+    @Test
+    public void testSecond() throws InterruptedException {
+            String chromeDriver = "webdriver.chrome.driver";
+            String driverPath = "D:/workJava/chromedriver.exe";
+            String url = "http://www.99-bottles-of-beer.net/";
+            String expectedResult = "Welcome to 99 Bottles of Beer";
+
+        System.setProperty(chromeDriver, driverPath);
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+
+        driver.get(url);
+
+        Thread.sleep(3000);
+
+        WebElement header = driver.findElement(By.xpath("//div[@id = 'main']/h2"));
+        String actualResult = header.getText();
+        //System.out.println(actualResult);
+        Assert.assertEquals(actualResult, expectedResult);
+
         driver.close();
         driver.quit();
     }
